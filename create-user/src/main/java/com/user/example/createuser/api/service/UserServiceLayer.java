@@ -8,7 +8,7 @@ public interface UserServiceLayer {
 
     List<UserDTO> findAll();
     UserDTO getUserById(Long id);
-    void addUser(UserDTO userDTO);
+    UserDTO addUser(UserDTO userDTO);
     UserDTO updateUser(Long id, UserDTO userDTO);
     UserDTO deleteUser(Long id);
 
