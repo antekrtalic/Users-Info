@@ -2,6 +2,7 @@ package com.user.example.createuser.controller;
 
 import com.user.example.createuser.api.service.UserServiceLayer;
 import com.user.example.createuser.dto.UserDTO;
+import com.user.example.createuser.entity.User;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
