@@ -7,12 +7,11 @@ import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -36,8 +35,24 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<UserDTO> getUserById(@PathVariable("id") Long id) {
-        Optional<User> result = userServiceLayer.getUserById(id);
+    public UserDTO getUserById(@PathVariable("id") Long id) {
 
+        return userServiceLayer.getUserById(id);
+    }
+
+    @PostMapping("/users")
+    public UserDTO createUser(@Valid @RequestBody UserDTO userDTO) {
+
+        return userServiceLayer.addUser(userDTO);
+    }
+
+    @PutMapping("/users/{id}")
+    public UserDTO updateUser(@PathVariable("id") Long id, UserDTO userDTO) {
+        return userServiceLayer.updateUser(id, userDTO);
+    }
+
+    @DeleteMapping("/users/{id}")
+    public UserDTO deleteUser(@PathVariable("id") Long id) {
+        return userServiceLayer.deleteUser(id);
     }
 }
