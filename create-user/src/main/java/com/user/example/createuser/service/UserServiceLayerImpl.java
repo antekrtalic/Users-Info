@@ -2,6 +2,7 @@ package com.user.example.createuser.service;
 
 import com.user.example.createuser.api.service.UserServiceLayer;
 import com.user.example.createuser.dto.UserDTO;
+import com.user.example.createuser.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,10 @@ import java.util.List;
 public class UserServiceLayerImpl extends UserServiceLayer {
 
     private ModelMapper modelMapper;
+
+    private UserRepository userRepository;
+
+    public UserServiceLayerImpl(ModelMapper modelMapper)
 
     @Override
     public List<UserDTO> findAll() {
