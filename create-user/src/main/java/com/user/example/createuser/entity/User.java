@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     @Id
@@ -17,7 +17,7 @@ public class User {
 
     @Getter
     @Setter
-    @Column(name = "firstName")
+    @Column(name = "first_name")
     private Long firstName;
 
     @Getter
