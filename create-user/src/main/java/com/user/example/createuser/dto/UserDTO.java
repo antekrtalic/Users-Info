@@ -21,7 +21,6 @@ public class UserDTO {
     @Getter @Setter private String email;
 
     @NotBlank(message = "City is required")
-    @Pattern(regexp = "^[a-zA-Z]+$")
     @Getter @Setter private String city;
 
     public UserDTO() {
