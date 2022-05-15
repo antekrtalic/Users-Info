@@ -37,7 +37,7 @@ public class UserController {
     @GetMapping("/users/{id}")
     public UserDTO getUserById(@PathVariable("id") Long id) {
 
-        return userServiceLayer.getUserById(id);
+        return userServiceLayer.findUserById(id);
     }
 
     @PostMapping("/users")

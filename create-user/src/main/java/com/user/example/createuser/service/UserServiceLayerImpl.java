@@ -5,9 +5,12 @@ import com.user.example.createuser.dto.UserDTO;
 import com.user.example.createuser.entity.User;
 import com.user.example.createuser.repository.UserRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,6 +20,7 @@ public class UserServiceLayerImpl implements UserServiceLayer {
 
     private UserRepository userRepository;
 
+    @Autowired
     public UserServiceLayerImpl(ModelMapper modelMapper, UserRepository userRepository) {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
@@ -29,9 +33,16 @@ public class UserServiceLayerImpl implements UserServiceLayer {
     }
 
     @Override
-    public UserDTO getUserById(Long id) {
+    public UserDTO findUserById(Long id) {
 
-        User theUser = userRepository.getById(id);
+        Optional<User> result = userRepository.findById(id);
+        User theUser = null;
+
+        if (result.isPresent()) {
+            theUser = result.get();
+        } else {
+            throw new RuntimeException("Did not find employee with id " + id);
+        }
         return modelMapper.map(theUser, UserDTO.class);
     }
 

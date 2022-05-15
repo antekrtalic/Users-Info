@@ -18,27 +18,27 @@ public class User {
     @Getter
     @Setter
     @Column(name = "first_name")
-    private Long firstName;
+    private String firstName;
 
     @Getter
     @Setter
     @Column(name = "last_name")
-    private Long lastName;
+    private String lastName;
 
     @Getter
     @Setter
     @Column(name = "email")
-    private Long email;
+    private String email;
 
     @Getter
     @Setter
     @Column(name = "city")
-    private Long city;
+    private String city;
 
     public User() {
     }
 
-    public User(Long firstName, Long lastName, Long email, Long city) {
+    public User(String firstName, String lastName, String email, String city) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
