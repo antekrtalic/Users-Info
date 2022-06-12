@@ -1,10 +1,10 @@
 <h1>CRUD Users application</h1>
 <p>-A general purpose user info app, created for purposes of showcasing the CRUD concept</p>
 <hr>
-<h3>#### Stack</h3>
+<h2>#### Stack</h2>
 <p>Java, Spring Boot, Spring JPA, MySQL, Lombook, MySQL, Maven</p>
 <hr>
-<h3>#### Highlighted features:</h3>
+<h2>#### Highlighted features:</h2>
 <p> - Register user</p>
 <p> - Create user</p>
 <p> - Update existing user</p>
