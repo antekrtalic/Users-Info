@@ -1,6 +1,10 @@
 <h1>CRUD Users application</h1>
-
-<p>Created basic CRUD application for users using Spring Boot, Maven, Spring JPA, MySQl, Git.</p>
-
+<p>-A general purpose user info app, created for purposes of showcasing the CRUD concept</p>
 <hr>
-<p>As someone who is working for few months already on Spring Boot, SQL and recently on Testing I realized I don't have any project that proves that basic skill I have regarding them, so I decided to create now some basic project which I can't upgrade later on.</p>
+<h3>#### Stack</h3>
+<p>Java, Spring Boot, Spring JPA, MySQL, Lombook, MySQL, Maven</p>
+<hr>
+<h3>#### Highlighted features:</h3>
+<p>- Register user</p>
+<p>- Create user</p>
+<p></p>
