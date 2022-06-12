@@ -2,7 +2,7 @@
 <p>-A general purpose user info app, created for purposes of showcasing the CRUD concept</p>
 <hr>
 <h2>#### Stack</h2>
-<p>Java, Spring Boot, Spring JPA, MySQL, Lombook, MySQL, Maven</p>
+<p>Java, Spring Boot, Spring JPA, MySQL, Lombok, MySQL, Maven</p>
 <hr>
 <h2>#### Highlighted features:</h2>
 <p> - Register user</p>
