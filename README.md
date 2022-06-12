@@ -5,6 +5,7 @@
 <p>Java, Spring Boot, Spring JPA, MySQL, Lombook, MySQL, Maven</p>
 <hr>
 <h3>#### Highlighted features:</h3>
-<p>- Register user</p>
-<p>- Create user</p>
-<p></p>
+<p> - Register user</p>
+<p> - Create user</p>
+<p> - Update existing user</p>
+<p> - Delete user</p>
