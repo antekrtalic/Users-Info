@@ -1,35 +1,38 @@
 package com.user.example.createuser.dto;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+@Data
 public class UserDTO {
 
-    @Getter @Setter private Long id;
+    private Long id;
 
-    @NotBlank(message = "First name required")
-    @Getter @Setter private String firstName;
+    @NotBlank(message = "Username is required")
+    private String username;
 
-    @NotBlank(message = "Last name is required")
-    @Getter @Setter private String lastName;
+    @NotBlank(message = "Password is required")
+    private String password;
+
+    @NotBlank(message = "Verification of password is required")
+    private String verifyPassword;
 
     @NotBlank(message = "Email is required")
     @Pattern(regexp = "[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+$")
     @Getter @Setter private String email;
 
-    @NotBlank(message = "City is required")
-    @Getter @Setter private String city;
 
     public UserDTO() {
     }
 
-    public UserDTO(String firstName, String lastName, String email, String city) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public UserDTO(String username, String password, String verifyPassword, String email) {
+        this.username = username;
+        this.password = password;
+        this.verifyPassword = verifyPassword;
         this.email = email;
-        this.city = city;
     }
 }

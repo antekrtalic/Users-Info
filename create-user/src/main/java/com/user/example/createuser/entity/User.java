@@ -1,47 +1,37 @@
 package com.user.example.createuser.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
     private Long id;
 
-    @Getter
-    @Setter
-    @Column(name = "first_name")
-    private String firstName;
+    @Column(name = "username")
+    private String username;
 
-    @Getter
-    @Setter
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "password")
+    private String password;
 
-    @Getter
-    @Setter
+    @Column(name = "verify_password")
+    private String verifyPassword;
+
     @Column(name = "email")
     private String email;
 
-    @Getter
-    @Setter
-    @Column(name = "city")
-    private String city;
-
-    public User() {
-    }
-
-    public User(String firstName, String lastName, String email, String city) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(String username, String password, String verifyPassword, String email) {
+        this.username = username;
+        this.password = password;
+        this.verifyPassword = verifyPassword;
         this.email = email;
-        this.city = city;
     }
+
 }

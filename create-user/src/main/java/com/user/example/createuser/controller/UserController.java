@@ -17,7 +17,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/user")
 public class UserController {
 
     private Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -28,30 +28,30 @@ public class UserController {
     @Autowired
     private UserServiceLayer userServiceLayer;
 
-    @GetMapping("/users")
+    @GetMapping("/")
     public List<UserDTO> getAllUsers() {
         return userServiceLayer.findAll().stream().map(user -> modelMapper.map(user, UserDTO.class))
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/{id}")
     public UserDTO getUserById(@PathVariable("id") Long id) {
 
         return userServiceLayer.findUserById(id);
     }
 
-    @PostMapping("/users")
+    @PostMapping("/register")
     public UserDTO createUser(@Valid @RequestBody UserDTO userDTO) {
 
         return userServiceLayer.addUser(userDTO);
     }
 
-    @PutMapping("/users/{id}")
+    @PutMapping("/update/{id}")
     public UserDTO updateUser(@PathVariable("id") Long id, UserDTO userDTO) {
         return userServiceLayer.updateUser(id, userDTO);
     }
 
-    @DeleteMapping("/users/{id}")
+    @DeleteMapping("/delete/{id}")
     public UserDTO deleteUser(@PathVariable("id") Long id) {
         return userServiceLayer.deleteUser(id);
     }
