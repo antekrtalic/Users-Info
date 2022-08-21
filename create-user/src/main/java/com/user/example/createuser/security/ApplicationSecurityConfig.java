@@ -1,5 +1,6 @@
 package com.user.example.createuser.security;
 
+import javafx.application.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
+import static com.user.example.createuser.security.ApplicationUserRole.ADMIN;
 
 @Configuration
 @EnableWebSecurity
@@ -41,7 +44,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         UserDetails cekiUser = User.builder()
                 .username("ceki")
                 .password(passwordEncoder.encode("ceki123"))
-                .roles("ADMIN") // ROLE_ADMIN
+                .roles(ADMIN.name()) // ROLE_ADMIN
                 .build();
 
         return new InMemoryUserDetailsManager(cekiUser);
