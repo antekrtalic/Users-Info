@@ -3,6 +3,7 @@ package com.user.example.createuser.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -24,6 +25,14 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = {
+            CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH,
+            CascadeType.REMOVE
+    })
+    @JoinTable(name = "user_tasks",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "task_id", referencedColumnName = "id")})
+    private List<Task> tasks;
     public User(String username, String password,String email) {
         this.username = username;
         this.password = password;
