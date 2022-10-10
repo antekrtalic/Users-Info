@@ -21,16 +21,12 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "verify_password")
-    private String verifyPassword;
-
     @Column(name = "email")
     private String email;
 
-    public User(String username, String password, String verifyPassword, String email) {
+    public User(String username, String password,String email) {
         this.username = username;
         this.password = password;
-        this.verifyPassword = verifyPassword;
         this.email = email;
     }
 
