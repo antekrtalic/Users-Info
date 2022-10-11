@@ -18,9 +18,6 @@ public class UserDTO {
     @NotBlank(message = "Password is required")
     private String password;
 
-    @NotBlank(message = "Verification of password is required")
-    private String verifyPassword;
-
     @NotBlank(message = "Email is required")
     @Pattern(regexp = "[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+$")
     @Getter @Setter private String email;
@@ -29,10 +26,9 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public UserDTO(String username, String password, String verifyPassword, String email) {
+    public UserDTO(String username, String password, String email) {
         this.username = username;
         this.password = password;
-        this.verifyPassword = verifyPassword;
         this.email = email;
     }
 }
