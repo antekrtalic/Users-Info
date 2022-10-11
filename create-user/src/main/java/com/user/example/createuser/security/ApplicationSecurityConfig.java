@@ -1,6 +1,5 @@
 package com.user.example.createuser.security;
 
-import javafx.application.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
