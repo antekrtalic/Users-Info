@@ -6,6 +6,7 @@ import com.user.example.createuser.entity.User;
 import com.user.example.createuser.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,10 +21,13 @@ public class UserServiceLayerImpl implements UserServiceLayer {
 
     private UserRepository userRepository;
 
+    private PasswordEncoder passwordEncoder;
+
     @Autowired
-    public UserServiceLayerImpl(ModelMapper modelMapper, UserRepository userRepository) {
+    public UserServiceLayerImpl(ModelMapper modelMapper, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -49,6 +53,7 @@ public class UserServiceLayerImpl implements UserServiceLayer {
     @Override
     public UserDTO addUser(UserDTO userDTO) {
 
+        userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         User userRequest = modelMapper.map(userDTO, User.class);
 
         User user = userRepository.save(userRequest);
