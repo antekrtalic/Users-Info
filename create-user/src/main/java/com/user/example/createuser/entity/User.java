@@ -1,9 +1,12 @@
 package com.user.example.createuser.entity;
 
 import lombok.*;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -33,10 +36,14 @@ public class User {
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "task_id", referencedColumnName = "id")})
     private List<Task> tasks;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {
+            CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH
+    })
+    private Set<Role> roles = new HashSet<>();
     public User(String username, String password,String email) {
         this.username = username;
         this.password = password;
         this.email = email;
     }
-
 }

@@ -21,15 +21,15 @@ public class UserDTO {
     @NotBlank(message = "Username is required")
     private String username;
 
-    @NotBlank(message = "Password is required")
+    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}")
     private String password;
 
     @NotBlank(message = "Email is required")
     @Pattern(regexp = "[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+$")
     @Getter @Setter private String email;
 
-    @NotNull
-    @Size(min = 1)
+//    @NotNull
+//    @Size(min = 1)
     private List<Task> tasks;
     public UserDTO(String username, String password, String email, List<Task> tasks) {
         this.username = username;
