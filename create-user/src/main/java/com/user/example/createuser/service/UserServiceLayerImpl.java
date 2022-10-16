@@ -21,13 +21,11 @@ public class UserServiceLayerImpl implements UserServiceLayer {
 
     private UserRepository userRepository;
 
-    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceLayerImpl(ModelMapper modelMapper, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceLayerImpl(ModelMapper modelMapper, UserRepository userRepository) {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -53,7 +51,6 @@ public class UserServiceLayerImpl implements UserServiceLayer {
     @Override
     public UserDTO addUser(UserDTO userDTO) {
 
-        userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         User userRequest = modelMapper.map(userDTO, User.class);
 
         User user = userRepository.save(userRequest);
