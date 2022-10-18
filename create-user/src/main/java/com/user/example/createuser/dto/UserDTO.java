@@ -37,4 +37,11 @@ public class UserDTO {
         this.email = email;
         this.tasks = tasks;
     }
+
+    public UserDTO(Long id, String username, String password, String email) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
 }
