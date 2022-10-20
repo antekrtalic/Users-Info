@@ -42,7 +42,7 @@ public class TaskController {
     @PutMapping("/update/{id}")
     public ResponseEntity<TaskDTO> updateTask(@PathVariable("id") Long id, @Valid @RequestBody TaskDTO taskDTO) {
         taskServiceLayer.updateTask(id, taskDTO);
-        return new ResponseEntity<>(taskServiceLayer.updateTask(id, taskDTO), HttpStatus.OK);
+        return new ResponseEntity<>(taskServiceLayer.findById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -12,6 +14,8 @@ import lombok.Setter;
 public class TaskDTO {
 
     private Long id;
+
+    @NotBlank(message = "title field is required")
     private String title;
     private String description;
 
