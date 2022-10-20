@@ -15,4 +15,8 @@ public class TaskDTO {
     private String title;
     private String description;
 
+    public TaskDTO(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
 }

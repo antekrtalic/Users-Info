@@ -27,6 +27,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         // We don't need CSRF for this example
         http
+                .csrf().disable()
                 .authorizeRequests()
                 .anyRequest()
                 .authenticated()
