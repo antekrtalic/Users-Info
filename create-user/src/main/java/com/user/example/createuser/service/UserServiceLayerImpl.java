@@ -28,12 +28,14 @@ public class UserServiceLayerImpl implements UserServiceLayer {
         this.userRepository = userRepository;
     }
 
+    @Transactional
     @Override
     public List<UserDTO> findAll() {
         return userRepository.findAll().stream()
                 .map(user -> modelMapper.map(user, UserDTO.class)).collect(Collectors.toList());
     }
 
+    @Transactional
     @Override
     public UserDTO findUserById(Long id) {
 
@@ -75,6 +77,7 @@ public class UserServiceLayerImpl implements UserServiceLayer {
         return userResponse;
     }
 
+    @Transactional
     @Override
     public UserDTO deleteUser(Long id) {
 
