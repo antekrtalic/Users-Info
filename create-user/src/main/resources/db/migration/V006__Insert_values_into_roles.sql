@@ -1,23 +1,20 @@
 INSERT
 INTO
-  `
-  role` (
+  `role` (
     name
   )
 VALUES
   ('EMPLOYEE');
 INSERT
 INTO
-  `
-  role` (
+  `role` (
     name
   )
 VALUES
   ('ADMIN');
 INSERT
 INTO
-  `
-  role` (
+  `role` (
     name
   )
 VALUES
