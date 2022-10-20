@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/user")
 public class UserController {
 
-    private Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private ModelMapper modelMapper;
@@ -29,30 +28,32 @@ public class UserController {
     private UserServiceLayer userServiceLayer;
 
     @GetMapping("/")
-    public List<UserDTO> getAllUsers() {
-        return userServiceLayer.findAll().stream().map(user -> modelMapper.map(user, UserDTO.class))
-                .collect(Collectors.toList());
+    public ResponseEntity<List<UserDTO>> getAllUsers() {
+        List<UserDTO> users = userServiceLayer.findAll();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public UserDTO getUserById(@PathVariable("id") Long id) {
+    public ResponseEntity<UserDTO> getUserById(@PathVariable("id") Long id) {
 
-        return userServiceLayer.findUserById(id);
+        return new ResponseEntity<>(userServiceLayer.findUserById(id), HttpStatus.OK);
     }
 
     @PostMapping("/register")
-    public UserDTO createUser(@Valid @RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserDTO> createUser(@Valid @RequestBody UserDTO userDTO) {
 
-        return userServiceLayer.addUser(userDTO);
+        return new ResponseEntity<>(userServiceLayer.addUser(userDTO), HttpStatus.CREATED);
     }
 
     @PutMapping("/update/{id}")
-    public UserDTO updateUser(@PathVariable("id") Long id, @Valid @RequestBody UserDTO userDTO) {
-        return userServiceLayer.updateUser(id, userDTO);
+    public ResponseEntity<UserDTO> updateUser(@PathVariable("id") Long id, @Valid @RequestBody UserDTO userDTO) {
+        userServiceLayer.updateUser(id, userDTO);
+        return new ResponseEntity<>(userServiceLayer.findUserById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    public UserDTO deleteUser(@PathVariable("id") Long id) {
-        return userServiceLayer.deleteUser(id);
+    public ResponseEntity<UserDTO> deleteUser(@PathVariable("id") Long id) {
+        userServiceLayer.deleteUser(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

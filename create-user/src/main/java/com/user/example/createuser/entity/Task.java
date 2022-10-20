@@ -23,6 +23,4 @@ public class Task {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne
-    private User user;
 }
