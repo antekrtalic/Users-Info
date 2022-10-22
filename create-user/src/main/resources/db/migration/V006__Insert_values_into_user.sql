@@ -4,7 +4,7 @@ INTO
   (username, password, email)
 VALUES
   ('admin', 'Admin123$', 'admin@gmail.com');
-INSERT
+  INSERT
 INTO
   user
   (username, password, email)
