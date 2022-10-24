@@ -50,7 +50,7 @@ public class ApplicationSecurityConfig{
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/user/*").hasAuthority("ADMIN")
+                .antMatchers("/api/user/*", "/api/task/*").hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
